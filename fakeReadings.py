@@ -3,6 +3,7 @@ import requests
 import math as m
 import time as t
 import numpy
+import datetime as dt
 
 def URL_post(wheel, distance, speed):
     x = t.time()
@@ -31,7 +32,9 @@ def randomDist():
         
     return b
 
-    
+distProfile = (0,0,0,80,50,0,0,0,0,0,0,0,0,0,0,0,0,0,50,100,80,100,0,0)
+
+
 step = 3600 # time step in seconds
 
 x = t.time() / step
@@ -52,7 +55,7 @@ while 1:
             
             wheel = x + 101
             
-            distance = randomDist()
+            distance = randomDist() + distProfile[dt.datetime.now().hour] * r.randint(5,10)/10
 
             s = numpy.random.normal(mean,sigma,1)
             
