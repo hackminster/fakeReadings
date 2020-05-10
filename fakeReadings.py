@@ -20,6 +20,17 @@ def URL_post(wheel, distance, speed):
     x = requests.post(url, data = myobj)
 
     print(x.text)
+
+def randomDist():
+    a = r.randint(1,4)
+
+    if a == 1:
+        b = r.randint(10,30)
+    else:
+        b = 0
+        
+    return b
+
     
 step = 3600 # time step in seconds
 
@@ -41,7 +52,7 @@ while 1:
             
             wheel = x + 101
             
-            distance = r.randint(0,100)
+            distance = randomDist()
 
             s = numpy.random.normal(mean,sigma,1)
             
