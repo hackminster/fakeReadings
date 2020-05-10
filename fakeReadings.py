@@ -2,6 +2,7 @@ import random as r
 import requests
 import math as m
 import time as t
+import numpy
 
 def URL_post(wheel, distance, speed):
     x = t.time()
@@ -26,6 +27,10 @@ x = t.time() / step
 
 y = m.ceil(x) * step
 
+# speed normal distribution parameters:
+mean = 3.5  # mean speed (m/s)
+sigma = 1   # standard deviation (m/s)
+
 while 1:
     
     if (t.time() > y):
@@ -37,8 +42,10 @@ while 1:
             wheel = x + 101
             
             distance = r.randint(0,100)
+
+            s = numpy.random.normal(mean,sigma,1)
             
-            speed = r.randint(200,600)/100
+            speed = '%.3f' % s[0]
             
             print("Wheel: ", wheel, " Distance: ", distance, " Speed: ", speed)
 
